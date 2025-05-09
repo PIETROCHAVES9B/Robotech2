@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robo Assistente - Loja Virtual | Robtech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav {
+      text-align: center;
+      background-color: #444;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: #888;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h2 {
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .product .price {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2e8b57;
+      margin-top: 10px;
+    }
+
+    .add-to-cart {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .add-to-cart:hover {
+      background-color: #45a049;
+    }
+
+    .payment-box {
+      display: none;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .payment-options {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .payment-options button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .payment-options button:hover {
+      background-color: #45a049;
+    }
+
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #333;
+      color: white;
+    }
+
+    .input-box {
+      display: none;
+      margin-top: 20px;
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-box input,
+    .input-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .input-box button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .input-box button:hover {
+      background-color: #45a049;
+    }
+
+    #about-us,
+    #contact-us,
+    #product-info-box {
+      display: none;
+      text-align: left;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    #product-info-box {
+      text-align: left;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Robtech - Loja Virtual</h1>
+  </header>
+
+  <nav>
+    <a href="#" id="home-btn">Início</a>
+    <a href="#" id="about-btn">Sobre Nós</a>
+    <a href="#" id="contact-btn">Contato</a>
+    <a href="#" id="product-info-btn">Sobre o Produto</a>
+  </nav>
+
+  <main>
+    <div class="product">
+      <img src="https://via.placeholder.com/800x400?text=Robo+Assistente" alt="Robo Assistente" />
+      <h2>Robo Assistente</h2>
+      <p>Este é o nosso Robo Assistente, projetado para ajudar em tarefas domésticas e fornecer suporte inteligente para o seu dia a dia.</p>
+      <p class="price">R$ 500,00</p>
+      <button class="add-to-cart" id="add-to-cart-btn">Adicionar ao Carrinho</button>
+      <button id="question-btn">Fazer uma Pergunta</button>
+      <button id="comment-btn">Deixar um Comentário</button>
+      <button id="payment-btn">Escolher Forma de Pagamento</button>
+
+      <div class="input-box" id="question-box">
+        <h3>Digite sua pergunta:</h3>
+        <textarea rows="4" placeholder="Sua pergunta..."></textarea>
+        <button>Enviar Pergunta</button>
+      </div>
+
+      <div class="input-box" id="comment-box">
+        <h3>Deixe seu comentário:</h3>
+        <textarea rows="4" placeholder="Seu comentário..."></textarea>
+        <button>Enviar Comentário</button>
+      </div>
+
+      <div class="payment-box" id="payment-box">
+        <h3>Escolha sua forma de pagamento</h3>
+        <div class="payment-options">
+          <button>Pix</button>
+          <button>Cartão de Crédito</button>
+        </div>
+        <p><strong>Taxa de Entrega: R$ 20,00</strong></p>
+      </div>
+    </div>
+
+    <!-- Caixa de informações sobre o produto -->
+    <div id="product-info-box">
+      <h2>Sobre o Produto</h2>
+      <p><strong>O Robo Assistente é um dispositivo inteligente projetado para facilitar a sua rotina diária. Ele pode realizar tarefas domésticas, fornecer suporte na organização de compromissos e até ajudar com lembretes.</strong></p>
+      <p>Além disso, o Robo Assistente é equipado com inteligência artificial que permite interagir com ele de forma natural. Ele aprende com o tempo, ficando cada vez mais eficiente para atender às suas necessidades.</p>
+      <p>Com ele, sua casa se torna mais inteligente e a sua vida, mais prática. Não perca a chance de ter um assistente pessoal ao seu lado!</p>
+    </div>
+
+    <div id="about-us">
+      <h2>Sobre Nós</h2>
+      <p>Somos a Robtech, uma empresa inovadora que visa o futuro da tecnologia. Nosso objetivo é transformar o mundo por meio de soluções tecnológicas inteligentes.</p>
+    </div>
+
+    <div id="contact-us">
+      <h2>Contato</h2>
+      <p><strong>Email:</strong> contato@robtech.com.br</p>
+      <p><strong>Telefone:</strong> (11) 98765-4321</p>
+    </div>
+  </main>
+
+  <div class="cart" id="cart-btn">Carrinho: 0 item(s)</div>
+
+  <footer>
+    <p>&copy; 2025 Robtech. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    let cartCount = 0;
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const cartBtn = document.getElementById('cart-btn');
+
+    addToCartBtn.addEventListener('click', () => {
+      cartCount++;
+      cartBtn.textContent = `Carrinho: ${cartCount} item(s)`;
+    });
+
+    function hideAllInputBoxes() {
+      document.getElementById('question-box').style.display = 'none';
+      document.getElementById('comment-box').style.display = 'none';
+      document.getElementById('payment-box').style.display = 'none';
+      document.getElementById('product-info-box').style.display = 'none';
+    }
+
+    document.getElementById('question-btn').addEventListener('click', () => {
+      hideAllInputBoxes();
+      const box = document.getElementById('question-box');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.getElementById('comment-btn').addEventListener('click', () => {
+      hideAllInputBoxes();
+      const box = document.getElementById('comment-box');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.getElementById('payment-btn').addEventListener('click', () => {
+      hideAllInputBoxes();
+      const box = document.getElementById('payment-box');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.getElementById('product-info-btn').addEventListener('click', () => {
+      hideAllInputBoxes();
+      const box = document.getElementById('product-info-box');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.getElementById('about-btn').addEventListener('click', () => {
+      const section = document.getElementById('about-us');
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+      document.getElementById('contact-us').style.display = 'none';
+    });
+
+    document.getElementById('contact-btn').addEventListener('click', () => {
+      const section = document.getElementById('contact-us');
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+      document.getElementById('about-us').style.display = 'none';
+    });
+
+    document.getElementById('home-btn').addEventListener('click', () => {
+      document.getElementById('about-us').style.display = 'none';
+      document.getElementById('contact-us').style.display = 'none';
+      hideAllInputBoxes();
+    });
+  </script>
+</body>
+</html>
